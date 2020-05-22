@@ -9,8 +9,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class RechargingPage {
-    private SelenideElement sumField = $("[type=text]");
-    private SelenideElement fromField = $("[type=tel]");
+    private SelenideElement sumField = $("[data-test-id=\"amount\"] input");
+    private SelenideElement fromField = $("[data-test-id=\"from\"] input ");
     private SelenideElement confirmButton = $$(".button__content").find(exactText("Пополнить"));
 
     public void submitTransfer(int transfer, DataHelper.CardInfo info) {
