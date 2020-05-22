@@ -1,1 +1,17 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/x78wob1e33egkdsu?svg=true)](https://ci.appveyor.com/project/mkovarsky/pageobject)
+# Тестирование функции перевода с карты на карту.
+Целью тестирования является проверка фунциональности перевода денежных средств между картами.  
+При успешном переводе, пользователь возвращается назад на страницу со списком карт.
+
+### Установка и запуск
+
+Приложение запускается комнадой `java -jar artifacts/app-ibank-build-for-testers.jar`  
+При успешном запуске личный кабинет достпуен по адресу http://localhost:9999
+
+### Процесс тестирования
+
+В репозитории расположены Java классы для проведения автоматического тестирования.  
+Тесты (класс MoneyTransferTest) запускаются из среды разработки InteIntelliJ IDEA или средствами системы автоматической сборки Gradle.
+ 
+ 
+ ### Build status
+ [![Build status](https://ci.appveyor.com/api/projects/status/x78wob1e33egkdsu?svg=true)](https://ci.appveyor.com/project/mkovarsky/pageobject)
