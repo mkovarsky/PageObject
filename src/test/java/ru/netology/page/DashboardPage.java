@@ -1,49 +1,41 @@
 package ru.netology.page;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
 public class DashboardPage {
 
-    private ElementsCollection depositButtons = $$("[data-test-id=action-deposit]");
-    private SelenideElement depositButton0001 = depositButtons.first();
-    private SelenideElement depositButton0002 = depositButtons.last();
-    private SelenideElement reloadButton = $("[data-test-id=action-reload]");
-    private ElementsCollection accounts = $$("[class='list__item']");
-    private SelenideElement balance0001 = accounts.first();
-    private SelenideElement balance0002 = accounts.last();
+    private SelenideElement depositButton0001 = $("[data-test-id=\"92df3f1c-a033-48e6-8390-206f6b1f56c0\"] [type='button']");
+    private SelenideElement depositButton0002 = $("[data-test-id=\"0f3f5c2a-249e-4c3d-8287-09f7a039391d\"] [type='button']");
+    private static SelenideElement balance0001 = $("[data-test-id=\"92df3f1c-a033-48e6-8390-206f6b1f56c0\"]");
+    private static SelenideElement balance0002 = $("[data-test-id=\"0f3f5c2a-249e-4c3d-8287-09f7a039391d\"]");
     private SelenideElement error = $("[data-test-id=error-notification]");
 
-
-    public DashboardPage deposit0001() {
+    public RechargingPage deposit0001() {
         depositButton0001.click();
-        return new DashboardPage();
+        return new RechargingPage();
     }
 
-    public DashboardPage deposit0002() {
+    public RechargingPage deposit0002() {
         depositButton0002.click();
-        return new DashboardPage();
+        return new RechargingPage();
     }
 
-    public DashboardPage reload() {
-        reloadButton.click();
-        return new DashboardPage();
+    public static int getCurrentBalanceOfFirstCard() {
+        String selectedValue = balance0001.getText();
+        String balanceOfFirstCard = selectedValue.substring(29, selectedValue.indexOf(" ", 29));
+        return Integer.parseInt(balanceOfFirstCard);
     }
 
-    public DashboardPage getBalance(int balance1, int balance2) {
-        reload();
-        balance0001.shouldHave(Condition.text(String.valueOf(balance1)));
-        balance0002.shouldHave(Condition.text(String.valueOf(balance2)));
-        return new DashboardPage();
+    public static int getCurrentBalanceOfSecondCard() {
+        String selectedValue = balance0002.getText();
+        String balanceOfFirstCard = selectedValue.substring(29, selectedValue.indexOf(" ", 29));
+        return Integer.parseInt(balanceOfFirstCard);
     }
 
-    public DashboardPage getError() {
+    public void getError() {
         error.shouldBe(visible);
-        return new DashboardPage();
     }
 }

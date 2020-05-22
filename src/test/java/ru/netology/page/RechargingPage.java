@@ -13,12 +13,11 @@ public class RechargingPage {
     private SelenideElement fromField = $("[type=tel]");
     private SelenideElement confirmButton = $$(".button__content").find(exactText("Пополнить"));
 
-    public DashboardPage submitTransfer(int transfer, DataHelper.CardInfo info) {
+    public void submitTransfer(int transfer, DataHelper.CardInfo info) {
         sumField.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         sumField.setValue(String.valueOf(transfer));
         fromField.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         fromField.setValue(info.getCardNumber());
         confirmButton.click();
-        return new DashboardPage();
     }
 }

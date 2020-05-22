@@ -35,4 +35,13 @@ public class DataHelper {
         return new CardInfo("5559000000000002");
     }
 
+    public static int checkBalanceOfDebitCard(int balance, int transfer) {
+        int finalBalance = balance - transfer;
+        return finalBalance;
+    }
+
+    public static int checkBalanceOfRechargeCard(int balance, int transfer) {
+        int finalBalance = balance + transfer;
+        return finalBalance;
+    }
 }
